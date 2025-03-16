@@ -1,8 +1,9 @@
 package com.cavichioli.design_patterns;
 
+import com.cavichioli.design_patterns.behavior.observer.service.OrderObserverService;
+import com.cavichioli.design_patterns.behavior.strategy.service.OrderStrategyService;
 import com.cavichioli.design_patterns.creational.builder.service.OrderBuilderService;
 import com.cavichioli.design_patterns.creational.singleton.service.OrderSingletonService;
-import com.cavichioli.design_patterns.structural.adapter.PaymentAdapter;
 import com.cavichioli.design_patterns.structural.adapter.service.OrderAdapterService;
 import com.cavichioli.design_patterns.structural.decorator.service.OrderDecoratorService;
 import com.cavichioli.design_patterns.structural.facade.OrderFacade;
@@ -20,6 +21,7 @@ public class DesignPatternsApplication implements CommandLineRunner {
 	@Autowired
 	OrderBuilderService orderBuilderService;
 
+
 	@Autowired
 	OrderDecoratorService orderDecoratorService;
 
@@ -28,6 +30,12 @@ public class DesignPatternsApplication implements CommandLineRunner {
 
 	@Autowired
 	OrderAdapterService orderAdapterService;
+
+	@Autowired
+	OrderObserverService orderObserverService;
+
+	@Autowired
+	OrderStrategyService orderStrategyService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(DesignPatternsApplication.class, args);
@@ -44,6 +52,10 @@ public class DesignPatternsApplication implements CommandLineRunner {
 		executeFacadePattern();
 
 		executeAdapterPattern();
+
+		executeObserverPattern();
+
+		executeStrategyPattern();
 	}
 
 	private void executeSingletonPattern() {
@@ -67,5 +79,13 @@ public class DesignPatternsApplication implements CommandLineRunner {
 
 	private void executeAdapterPattern() {
 		orderAdapterService.payOrder();
+	}
+
+	private void executeObserverPattern() {
+		orderObserverService.updateOrder();
+	}
+
+	private void executeStrategyPattern() {
+		orderStrategyService.payOrder();
 	}
 }

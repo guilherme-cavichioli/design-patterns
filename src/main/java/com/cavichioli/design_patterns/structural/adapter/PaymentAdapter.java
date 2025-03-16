@@ -14,6 +14,6 @@ public class PaymentAdapter implements PaymentProcessor {
     public void pay(Order order) {
         String amount = Double.toString(order.getValue());
         System.out.println("Adapting order to call external payment gateway.");
-        externalPaymentGateway.processPayment(order.getId().toString(), amount.toString());
+        externalPaymentGateway.processPayment(order.getId().toString(), amount);
     }
 }
